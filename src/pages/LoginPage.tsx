@@ -48,9 +48,9 @@ export const LoginPage: React.FC = () => {
       <div className="w-full max-w-md">
         <div className="rounded-lg bg-white p-8 shadow-lg dark:bg-slate-800">
           <div className="mb-8 text-center">
-            <div className="inline-flex h-12 w-12 items-center justify-center rounded-lg bg-primary-600">
+            {/* <div className="inline-flex h-12 w-12 items-center justify-center rounded-lg bg-primary-600">
               <span className="text-xl font-bold text-white">L</span>
-            </div>
+            </div> */}
             <h1 className="mt-4 text-2xl font-bold text-slate-900 dark:text-white">Leads Dashboard</h1>
             <p className="mt-2 text-slate-600 dark:text-slate-400">Sign in to your account</p>
           </div>
@@ -80,9 +80,9 @@ export const LoginPage: React.FC = () => {
               required
             />
 
-            <Button type="submit" variant="primary" className="w-full" loading={isLoading}>
-              Sign In
-            </Button>
+              <Button type="submit" variant="primary" className="w-full" loading={isLoading}>
+                Sign In
+              </Button>
           </form>
 
           <p className="mt-4 text-center text-sm text-slate-600 dark:text-slate-400">
