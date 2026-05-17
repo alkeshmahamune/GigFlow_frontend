@@ -1,35 +1,40 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate, useSearchParams, Link } from 'react-router-dom';
-import { Input, Button, ErrorAlert, DarkModeToggle } from '@components/common/index';
-import { useAuth } from '@hooks/index';
-import { validateRegisterForm } from '@utils/validation';
-import type { ValidationError } from '@utils/validation';
+import React, { useState, useEffect } from "react";
+import { useNavigate, useSearchParams, Link } from "react-router-dom";
+import {
+  Input,
+  Button,
+  ErrorAlert,
+  DarkModeToggle,
+} from "@components/common/index";
+import { useAuth } from "@hooks/index";
+import { validateRegisterForm } from "@utils/validation";
+import type { ValidationError } from "@utils/validation";
 
 export const RegisterPage: React.FC = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const { register, isLoading, error, isAuthenticated, clearError } = useAuth();
 
-  const [role, setRole] = useState('sales');
+  const [role, setRole] = useState("sales");
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
+    name: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
   });
 
   const [errors, setErrors] = useState<ValidationError>({});
 
   useEffect(() => {
-    const requestedRole = searchParams.get('role');
-    if (requestedRole === 'admin' || requestedRole === 'sales') {
+    const requestedRole = searchParams.get("role");
+    if (requestedRole === "admin" || requestedRole === "sales") {
       setRole(requestedRole);
     }
   }, [searchParams]);
 
   useEffect(() => {
     if (isAuthenticated) {
-      navigate('/dashboard');
+      navigate("/dashboard");
     }
   }, [isAuthenticated, navigate]);
 
@@ -37,7 +42,7 @@ export const RegisterPage: React.FC = () => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
     if (errors[name]) {
-      setErrors((prev) => ({ ...prev, [name]: '' }));
+      setErrors((prev) => ({ ...prev, [name]: "" }));
     }
   };
 
@@ -49,7 +54,7 @@ export const RegisterPage: React.FC = () => {
       formData.name,
       formData.email,
       formData.password,
-      formData.confirmPassword
+      formData.confirmPassword,
     );
 
     if (Object.keys(validationErrors).length > 0) {
@@ -63,7 +68,7 @@ export const RegisterPage: React.FC = () => {
         email: formData.email,
         password: formData.password,
       },
-      role
+      role,
     );
   };
 
@@ -76,12 +81,19 @@ export const RegisterPage: React.FC = () => {
 
       <div className="w-full max-w-md">
         <div className="rounded-lg bg-white p-8 shadow-lg dark:bg-slate-800">
-          <div className="mb-8 text-center">
-            <div className="inline-flex h-12 w-12 items-center justify-center rounded-lg bg-primary-600">
-              <span className="text-xl font-bold text-white">L</span>
+          <div className="mb-8 w-full text-center">
+            <div className="flex items-center gap-2">
+            <div className="w-10 h-10 bg-slate-900 dark:bg-white rounded-lg flex items-center justify-center">
+              <span className="text-white dark:text-slate-900 font-bold text-lg">LD</span>
             </div>
-            <h1 className="mt-4 text-2xl font-bold text-slate-900 dark:text-white">Leads Dashboard</h1>
-            <p className="mt-2 text-slate-600 dark:text-slate-400">Create a new account</p>
+            <span className="text-xl font-semibold text-slate-900 dark:text-white">
+              Leads Dashboard
+            </span>
+          </div>
+            {/* <h1 className="mt-4 text-2xl font-bold text-slate-900 dark:text-white">Leads Dashboard</h1> */}
+            <p className="mt-2 font-semibold text-xl text-slate-600 dark:text-slate-400">
+              Create a new account
+            </p>
           </div>
 
           {error && <ErrorAlert message={error} onClose={clearError} />}
@@ -131,7 +143,9 @@ export const RegisterPage: React.FC = () => {
             />
 
             <div className="space-y-2">
-              <label className="block text-sm font-medium text-slate-700 dark:text-slate-100">Register as</label>
+              <label className="block text-sm font-medium text-slate-700 dark:text-slate-100">
+                Register as
+              </label>
               <select
                 value={role}
                 onChange={(event) => setRole(event.target.value)}
@@ -142,14 +156,22 @@ export const RegisterPage: React.FC = () => {
               </select>
             </div>
 
-            <Button type="submit" variant="primary" className="w-full" loading={isLoading}>
+            <Button
+              type="submit"
+              variant="primary"
+              className="w-full"
+              loading={isLoading}
+            >
               Create Account
             </Button>
           </form>
 
           <p className="mt-4 text-center text-sm text-slate-600 dark:text-slate-400">
-            Already have an account?{' '}
-            <Link to="/login" className="font-medium text-primary-600 hover:text-primary-700 dark:text-primary-400">
+            Already have an account?{" "}
+            <Link
+              to="/login"
+              className="font-medium text-primary-600 hover:text-primary-700 dark:text-primary-400"
+            >
               Sign In
             </Link>
           </p>

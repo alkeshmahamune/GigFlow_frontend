@@ -74,7 +74,7 @@ export const LeadDetails: React.FC<LeadDetailsProps> = ({ isOpen, lead, onClose 
         <div className="mt-6 border-t border-slate-200 pt-6 dark:border-slate-700">
           <button
             onClick={onClose}
-            className="btn btn-secondary w-full"
+            className="btn btn-danger w-full text-white font-semibold rounded-lg bg-red-500 py-1"
           >
             Close
           </button>

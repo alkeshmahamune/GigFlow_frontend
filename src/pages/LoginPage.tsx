@@ -53,11 +53,16 @@ export const LoginPage: React.FC = () => {
       <div className="w-full max-w-md">
         <div className="rounded-lg bg-white p-8 shadow-lg dark:bg-slate-800">
           <div className="mb-8 text-center">
-            {/* <div className="inline-flex h-12 w-12 items-center justify-center rounded-lg bg-primary-600">
-              <span className="text-xl font-bold text-white">L</span>
-            </div> */}
-            <h1 className="mt-4 text-2xl font-bold text-slate-900 dark:text-white">Leads Dashboard</h1>
-            <p className="mt-2 text-slate-600 dark:text-slate-400">Sign in to your account</p>
+            <div className="flex items-center gap-2">
+            <div className="w-10 h-10 bg-slate-900 dark:bg-white rounded-lg flex items-center justify-center">
+              <span className="text-white dark:text-slate-900 font-bold text-lg">LD</span>
+            </div>
+            <span className="text-xl font-semibold text-slate-900 dark:text-white">
+              Leads Dashboard
+            </span>
+          </div>
+            {/* <h1 className="mt-4 text-2xl font-bold text-slate-900 dark:text-white">Leads Dashboard</h1> */}
+            <p className="mt-2 text-slate-600 dark:text-slate-400 font-semibold text-xl">Sign in to your account</p>
           </div>
 
           {error && <ErrorAlert message={error} onClose={clearError} />}

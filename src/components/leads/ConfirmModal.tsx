@@ -27,7 +27,7 @@ export const ConfirmModal: React.FC<ConfirmModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
-      <div className="card w-full max-w-md animate-slide-in-up">
+      <div className="card w-full border border-gray-400 p-5 box-border rounded-2xl max-w-md animate-slide-in-up">
         <div className="flex items-center gap-4">
           {isDangerous && <AlertTriangle className="h-6 w-6 text-red-600" />}
           <div className="flex-1">
