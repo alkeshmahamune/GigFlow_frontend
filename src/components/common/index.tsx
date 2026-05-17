@@ -99,3 +99,5 @@ export const Loading: React.FC<{ message?: string }> = ({ message = 'Loading...'
     {message}
   </div>
 );
+
+export { DarkModeToggle } from './DarkModeToggle';

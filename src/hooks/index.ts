@@ -171,3 +171,5 @@ export function useLeads() {
     clearError,
   };
 }
+
+export { useDarkMode, DarkModeProvider } from './useDarkMode';

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Input, Button, ErrorAlert } from '@components/common/index';
+import { Input, Button, ErrorAlert, DarkModeToggle } from '@components/common/index';
 import { useAuth } from '@hooks/index';
 import { validateLoginForm } from '@utils/validation';
 import type { ValidationError } from '@utils/validation';
@@ -45,6 +45,11 @@ export const LoginPage: React.FC = () => {
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 px-4">
+      {/* Dark Mode Toggle - Top Right */}
+      <div className="fixed right-4 top-4">
+        <DarkModeToggle />
+      </div>
+
       <div className="w-full max-w-md">
         <div className="rounded-lg bg-white p-8 shadow-lg dark:bg-slate-800">
           <div className="mb-8 text-center">
