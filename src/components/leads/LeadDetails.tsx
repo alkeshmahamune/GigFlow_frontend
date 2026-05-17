@@ -3,7 +3,7 @@ import { X } from 'lucide-react';
 import { Card } from '@components/common/index';
 import { Badge } from '@components/common/index';
 import { formatDateTime } from '@utils/date';
-import type { Lead } from '@types/index';
+import type { Lead } from '@app-types/index';
 
 interface LeadDetailsProps {
   isOpen: boolean;
@@ -43,7 +43,7 @@ export const LeadDetails: React.FC<LeadDetailsProps> = ({ isOpen, lead, onClose 
           <div>
             <p className="text-sm font-medium text-slate-600 dark:text-slate-400">Status</p>
             <div className="mt-1">
-              <Badge variant="status" value={lead.status}>
+              <Badge variant="status">
                 {lead.status}
               </Badge>
             </div>
@@ -52,7 +52,7 @@ export const LeadDetails: React.FC<LeadDetailsProps> = ({ isOpen, lead, onClose 
           <div>
             <p className="text-sm font-medium text-slate-600 dark:text-slate-400">Source</p>
             <div className="mt-1">
-              <Badge variant="source" value={lead.source}>
+              <Badge variant="source">
                 {lead.source}
               </Badge>
             </div>

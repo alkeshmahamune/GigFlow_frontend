@@ -1,8 +1,8 @@
 import React from 'react';
 import { X } from 'lucide-react';
-import { Card, CardHeader, CardContent } from '@components/common/index';
+import { Card } from '@components/common/index';
 import { LeadForm } from './LeadForm';
-import type { Lead, CreateLeadRequest, UpdateLeadRequest } from '@types/index';
+import type { Lead, CreateLeadRequest, UpdateLeadRequest } from '@app-types/index';
 
 interface LeadModalProps {
   isOpen: boolean;
@@ -33,7 +33,13 @@ export const LeadModal: React.FC<LeadModalProps> = ({ isOpen, lead, isLoading = 
         </div>
 
         <div className="mt-6">
-          <LeadForm lead={lead} isLoading={isLoading} onSubmit={onSubmit} onCancel={onClose} />
+          <LeadForm
+            key={lead?.id ?? 'new-lead'}
+            lead={lead}
+            isLoading={isLoading}
+            onSubmit={onSubmit}
+            onCancel={onClose}
+          />
         </div>
       </Card>
     </div>

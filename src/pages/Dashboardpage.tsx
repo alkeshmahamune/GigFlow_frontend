@@ -18,7 +18,7 @@ import {
 } from '@components/leads/index';
 import { useLeads } from '@hooks/index';
 import { exportLeadsToCSV } from '@utils/csv';
-import type { Lead, CreateLeadRequest, UpdateLeadRequest } from '@types/index';
+import type { Lead, CreateLeadRequest, UpdateLeadRequest } from '@app-types/index';
 
 export const DashboardPage: React.FC = () => {
   const {
@@ -47,7 +47,7 @@ export const DashboardPage: React.FC = () => {
 
   useEffect(() => {
     fetchLeads();
-  }, []);
+  }, [fetchLeads]);
 
   const handleCreateLead = async (data: CreateLeadRequest) => {
     setModalLoading(true);
