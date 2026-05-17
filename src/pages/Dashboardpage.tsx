@@ -17,6 +17,7 @@ import {
   ConfirmModal,
 } from '@components/leads/index';
 import { useLeads } from '@hooks/index';
+import { useAuthStore } from '@stores/index';
 import { exportLeadsToCSV } from '@utils/csv';
 import type { Lead, CreateLeadRequest, UpdateLeadRequest } from '@app-types/index';
 
@@ -36,6 +37,7 @@ export const DashboardPage: React.FC = () => {
     resetFilters,
     clearError,
   } = useLeads();
+  const user = useAuthStore((state) => state.user);
 
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
@@ -116,7 +118,14 @@ export const DashboardPage: React.FC = () => {
         {/* Header */}
         <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
           <div>
-            <h1 className="text-3xl font-bold text-slate-900 dark:text-white">Leads Management</h1>
+            <div className="flex flex-wrap items-center gap-3">
+              <h1 className="text-3xl font-bold text-slate-900 dark:text-white">Leads Management</h1>
+              {user?.role && (
+                <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-slate-700 dark:bg-slate-700 dark:text-slate-200">
+                  {user.role}
+                </span>
+              )}
+            </div>
             <p className="mt-1 text-slate-600 dark:text-slate-400">Manage and track your sales leads</p>
           </div>
           <Button variant="primary" onClick={() => setIsCreateModalOpen(true)} className="flex items-center gap-2">

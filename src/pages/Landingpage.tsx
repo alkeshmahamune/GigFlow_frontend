@@ -21,16 +21,10 @@ export const LandingPage: React.FC = () => {
       icon: '👨‍💼',
     },
     {
-      id: 'agent',
+      id: 'sales',
       title: 'Sales Agent',
       description: 'Manage your assigned leads',
       icon: '📞',
-    },
-    {
-      id: 'manager',
-      title: 'Manager',
-      description: 'Oversee team performance',
-      icon: '📊',
     },
   ];
 

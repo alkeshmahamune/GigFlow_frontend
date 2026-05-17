@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate, useSearchParams, Link } from 'react-router-dom';
 import { Input, Button, ErrorAlert, DarkModeToggle } from '@components/common/index';
 import { useAuth } from '@hooks/index';
 import { validateRegisterForm } from '@utils/validation';
@@ -7,8 +7,10 @@ import type { ValidationError } from '@utils/validation';
 
 export const RegisterPage: React.FC = () => {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const { register, isLoading, error, isAuthenticated, clearError } = useAuth();
 
+  const [role, setRole] = useState('sales');
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -17,6 +19,13 @@ export const RegisterPage: React.FC = () => {
   });
 
   const [errors, setErrors] = useState<ValidationError>({});
+
+  useEffect(() => {
+    const requestedRole = searchParams.get('role');
+    if (requestedRole === 'admin' || requestedRole === 'sales') {
+      setRole(requestedRole);
+    }
+  }, [searchParams]);
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -48,11 +57,14 @@ export const RegisterPage: React.FC = () => {
       return;
     }
 
-    await register({
-      name: formData.name,
-      email: formData.email,
-      password: formData.password,
-    });
+    await register(
+      {
+        name: formData.name,
+        email: formData.email,
+        password: formData.password,
+      },
+      role
+    );
   };
 
   return (
@@ -117,6 +129,18 @@ export const RegisterPage: React.FC = () => {
               error={errors.confirmPassword}
               required
             />
+
+            <div className="space-y-2">
+              <label className="block text-sm font-medium text-slate-700 dark:text-slate-100">Register as</label>
+              <select
+                value={role}
+                onChange={(event) => setRole(event.target.value)}
+                className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 outline-none transition focus:border-primary-500 focus:ring-2 focus:ring-primary-200 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+              >
+                <option value="sales">Sales</option>
+                <option value="admin">Admin</option>
+              </select>
+            </div>
 
             <Button type="submit" variant="primary" className="w-full" loading={isLoading}>
               Create Account
