@@ -19,8 +19,14 @@ export async function loginRequest(credentials: AuthCredentials) {
   return response.data;
 }
 
-export async function registerRequest(payload: RegisterCredentials, role: string = 'sales') {
-  const response = await api.post<AuthResponse>('/auth/register', { ...payload, role });
+export async function registerRequest(
+  payload: RegisterCredentials,
+  role: string = 'sales'
+) {
+  const response = await api.post<AuthResponse>(
+    '/auth/register',
+    { ...payload, role }
+  );
+
   return response.data;
 }
-
