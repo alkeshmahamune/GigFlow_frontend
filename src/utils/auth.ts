@@ -1,4 +1,4 @@
-import api, { authHeader } from './api';
+import api from './api';
 import type { AuthCredentials, RegisterCredentials } from '@app-types/index';
 
 export interface AuthResponse {
