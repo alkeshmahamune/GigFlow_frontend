@@ -232,7 +232,7 @@ npm run lint
 The frontend communicates with the backend via RESTful API:
 
 ```
-Base URL: http://localhost:5000/api
+Base URL: https://gigflow-backend-a2m8.onrender.com
 ```
 
 ### Authentication Endpoints
@@ -383,6 +383,7 @@ This project is part of an assignment and is provided for educational purposes.
 
 ## 👤 Author
 
+Alkesh Mahamune
 Created as a comprehensive frontend implementation demonstrating professional React and TypeScript development practices.
 
 ---
